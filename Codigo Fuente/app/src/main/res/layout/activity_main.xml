@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Menú Principal" />
+
+    <Button
+        android:id="@+id/botoncaptura"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="#2196F3"
+        android:onClick="irCaptura"
+        android:text="Configurar Reconocimiento de Voz"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <Button
+        android:id="@+id/botoncomandpred"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#2196F3"
+        android:onClick="irLista"
+        android:text="Lista de comandos predeterminados"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botoncaptura" />
+
+    <Button
+        android:id="@+id/botoncompers"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#2196F3"
+        android:onClick="irCustom"
+        android:text="Configurar Comandos personalizados"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botoncomandpred" />
+
+    <Button
+        android:id="@+id/botoncontactos"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#2196F3"
+        android:onClick="irContactos"
+        android:text="Agregar/Cambiar números de contacto"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botoncompers" />
+
+    <Button
+        android:id="@+id/botonzona"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#2196F3"
+        android:text="Consultar Zona Segura"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botoncontactos" />
+
+    <Button
+        android:id="@+id/botonsalida"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#2196F3"
+        android:onClick="salir"
+        android:text="Salir de la aplicación"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonayuda" />
+
+    <Button
+        android:id="@+id/botonayuda"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="#2196F3"
+        android:text="Ayuda"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonzona" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
