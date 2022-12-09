@@ -105,12 +105,12 @@ public class Contactos extends AppCompatActivity {
             cont3 = Long.parseLong(numero3);
             cont4 = Long.parseLong(numero4);
 
-            SharedPreferences preferencias = getSharedPreferences("contactos", Context.MODE_PRIVATE);
+            SharedPreferences preferencias = getSharedPreferences("Contactos", Context.MODE_PRIVATE);
             SharedPreferences.Editor obj_editor = preferencias.edit();
-            obj_editor.putLong("Contacto 1",cont1);
-            obj_editor.putLong("Contacto 2",cont2);
-            obj_editor.putLong("Contacto 3",cont3);
-            obj_editor.putLong("Contacto 4",cont4);
+            obj_editor.putLong("contacto1",cont1);
+            obj_editor.putLong("contacto2",cont2);
+            obj_editor.putLong("contacto3",cont3);
+            obj_editor.putLong("contacto4",cont4);
             obj_editor.commit();
             asignarContacto();
         } catch (Exception e) {
@@ -124,15 +124,15 @@ public class Contactos extends AppCompatActivity {
     public void asignarContacto(){
         cont1=cont2=cont3=cont4=0L;
 
-        SharedPreferences preferencias = getSharedPreferences("contactos",Context.MODE_PRIVATE);
+        SharedPreferences preferencias = getSharedPreferences("Contactos",Context.MODE_PRIVATE);
 
-        cont1 = preferencias.getLong("Contacto 1",0);
+        cont1 = preferencias.getLong("contacto1",0);
         contacto1.setText(""+cont1);
-        cont2 = preferencias.getLong("Contacto 2",0);
+        cont2 = preferencias.getLong("contacto2",0);
         contacto2.setText(""+cont2);
-        cont3 = preferencias.getLong("Contacto 3",0);
+        cont3 = preferencias.getLong("contacto3",0);
         contacto3.setText(""+cont3);
-        cont4 = preferencias.getLong("Contacto 4",0);
+        cont4 = preferencias.getLong("contacto4",0);
         contacto4.setText(""+cont4);
 
         if(cont1==0)
