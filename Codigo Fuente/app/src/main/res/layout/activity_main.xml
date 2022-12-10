@@ -85,8 +85,9 @@
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botoncontactos" />
+        app:layout_constraintTop_toBottomOf="@+id/botonayuda" />
 
     <Button
         android:id="@+id/botonsalida"
@@ -101,13 +102,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonayuda" />
+        app:layout_constraintTop_toBottomOf="@+id/botonzona" />
 
     <Button
         android:id="@+id/botonayuda"
         android:layout_width="251dp"
         android:layout_height="72dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#2196F3"
         android:onClick="iniciarEscucha"
         android:text="Iniciar escucha de comandos"
@@ -115,6 +116,6 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonzona" />
+        app:layout_constraintTop_toBottomOf="@+id/botoncontactos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

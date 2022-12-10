@@ -2,8 +2,10 @@ package com.example.vigivoice;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import android.Manifest;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
@@ -40,7 +42,7 @@ public class ServicioReconocimiento {
 
     private SpeechRecognizer mRecognizer;
     private FusedLocationProviderClient cliente;
-    private String[] info = null;
+    private String[] info = new String[2];
     private RecognitionListener mRecognitionListener = new RecognitionListener() {
         @Override
         public void onError(int error) {
@@ -60,7 +62,10 @@ public class ServicioReconocimiento {
             String temp2 = preferenciascom.getString("comando2", "");
             String temp3 = preferenciascom.getString("comando3", "");
             String temp4 = preferenciascom.getString("comando4", "");
-
+            String mensaje1 ="";
+            String mensaje2 = "";
+            String mensaje3 = "";
+            String mensaje4 = "";
             SharedPreferences preferenciascon = contexto.getSharedPreferences("Contactos", Context.MODE_PRIVATE);
 
             SmsManager mensajero = SmsManager.getDefault();
@@ -68,50 +73,78 @@ public class ServicioReconocimiento {
             for (String res : values) {
                 if (res.equalsIgnoreCase(temp1) || res.equalsIgnoreCase("0528")) {
                     Toast.makeText(contexto, "Comando recibido: Caso de ROBO", Toast.LENGTH_LONG).show();
+                    mensaje1="[VigiVoice] ALERTA. PEPITO HA SIDO VICTIMA DE ROBO";
+                    mensaje4 = "Su ubicación es:";
+                    mensaje2=" Latitud: " + info[0];
+                    mensaje3=" Longitud: " + info[1];
                     for (int i = 0; i < 4; i++) {
                         Long templ = preferenciascon.getLong("contacto" + (i + 1), 0);
                         if (templ != 0L) {
                             //Enviar mensaje de robo
-                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, "[VigiVoice] ALERTA. TU" +
-                                    "AMIGO/FAMILIAR HA SIDO VICTIMA DE ROBO. Su ubicación es:"+"Latitud: "+info[0] +"Longitud: "+info[1], null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje1, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje4, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje2, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje3, null, null);
                         }
                     }
                 }
                 if (res.equalsIgnoreCase(temp2) || res.equalsIgnoreCase("2387")) {
                     Toast.makeText(contexto, "Comando recibido: Caso de ASALTO", Toast.LENGTH_LONG).show();
+                    mensaje1="[VigiVoice] ALERTA. PEPITO HA SIDO VICTIMA DE ASALTO";
+                    mensaje4 = "Su ubicación es:";
+                    mensaje2=" Latitud: " + info[0];
+                    mensaje3=" Longitud: " + info[1];
                     for (int i = 0; i < 4; i++) {
                         if (preferenciascon.getLong("contacto" + (i + 1), 0) != 0) {
                             Long templ = preferenciascon.getLong("contacto" + (i + 1), 0);
                             if (templ != 0L) {
                                 //Enviar mensaje de asalto
-                                mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, "Alerta VigiVoice: ROBO", null, null);
+                                mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje1, null, null);
+                                mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje4, null, null);
+                                mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje2, null, null);
+                                mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje3, null, null);
                             }
                         }
                     }
                 }
                 if (res.equalsIgnoreCase(temp3) || res.equalsIgnoreCase("4158")) {
                     Toast.makeText(contexto, "Comando recibido: Caso de SECUESTRO", Toast.LENGTH_LONG).show();
+                    mensaje1="[VigiVoice] ALERTA. PEPITO HA SIDO VICTIMA DE SECUESTRO";
+                    mensaje4 = "Su ubicación es:";
+                    mensaje2=" Latitud: " + info[0];
+                    mensaje3=" Longitud: " + info[1];
                     for (int i = 0; i < 4; i++) {
                         Long templ = preferenciascon.getLong("contacto" + (i + 1), 0);
                         if (templ != 0L) {
                             //Enviar mensaje de secuestro
-                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, "Alerta VigiVoice: ROBO", null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje1, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje4, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje2, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje3, null, null);
                         }
                     }
                 }
                 if (res.equalsIgnoreCase(temp4) || res.equalsIgnoreCase("7884")) {
                     Toast.makeText(contexto, "Comando recibido: Caso de AVISTAMIENTO DE CRIMEN", Toast.LENGTH_LONG).show();
+                    mensaje1="[VigiVoice] ALERTA. PEPITO HA PRESENCIADO UN CRIMEN";
+                    mensaje4 = "Su ubicación es:";
+                    mensaje2=" Latitud: " + info[0];
+                    mensaje3=" Longitud: " + info[1];
                     for (int i = 0; i < 4; i++) {
                         Long templ = preferenciascon.getLong("contacto" + (i + 1), 0);
                         if (templ != 0L) {
                             //Enviar mensaje de avistamiento
-                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, "Alerta VigiVoice: ROBO", null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje1, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje4, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje2, null, null);
+                            mensajero.sendTextMessage("+57" + preferenciascon.getLong("contacto" + (i + 1), 0), null, mensaje3, null, null);
                         }
                     }
                 }
             }
             startSpeechRecognition();
         }
+
 
         @Override
         public void onBeginningOfSpeech() {
@@ -144,6 +177,7 @@ public class ServicioReconocimiento {
 
     protected void crearServicio() {
         startSpeechRecognition();
+        getLocation();
     }
 
     private void startSpeechRecognition() {
@@ -179,41 +213,40 @@ public class ServicioReconocimiento {
     }
 
 
-    public String[] getLocation() {
+    public void getLocation() {
 
         if (isLocationEnabled()) {
 
-            if (ActivityCompat.checkSelfPermission(contexto, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(contexto, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(contexto, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(contexto, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             }
             cliente.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                 @Override
-                 public void onComplete(@NonNull Task<Location> task) {
-                     if(task.isSuccessful()){
-                         Location location = task.getResult();
-                         if(location!=null){
-                             //Toast.makeText(contexto,"Latitud: "+location.getLatitude() + "Longitud: "+location.getLongitude(), Toast.LENGTH_LONG).show();
-                             info[0] = ""+location.getLatitude();
-                             info[1] = ""+location.getLongitude();
-                         }
-                     }
-                 }
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+                    if (task.isSuccessful()) {
+                        Location location = task.getResult();
+                        if (location != null) {
+                            //Toast.makeText(contexto,"Latitud: "+location.getLatitude() + "Longitud: "+location.getLongitude(), Toast.LENGTH_LONG).show();
+                            info[0] = "" + location.getLatitude();
+                            info[1] = "" + location.getLongitude();
+                        }
+                    }
+                }
             });
-        }else{
-                Toast.makeText(contexto,"HABILITA LA UBICACIÓN DE TU TELEFONO",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                contexto.startActivity(intent);
-            }
-
-        return info;
+        } else {
+            Toast.makeText(contexto, "HABILITA LA UBICACIÓN DE TU TELEFONO", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            contexto.startActivity(intent);
+        }
     }
 
-    public boolean isLocationEnabled(){
+    public boolean isLocationEnabled() {
         LocationManager locationManager = (LocationManager) contexto.getSystemService(Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)||locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
-    public void setContexto(Context contexto){
+    public void setContexto(Context contexto) {
         this.contexto = contexto;
         cliente = LocationServices.getFusedLocationProviderClient(contexto);
     }
